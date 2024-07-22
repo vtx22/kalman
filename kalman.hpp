@@ -18,11 +18,12 @@ public:
         _x_n = x0;
     }
 
-    void predict(const Matrix<STATES, STATES> &A, const Matrix<STATES, STATES> &system_noise)
+    Matrix<STATES, 1> &predict(const Matrix<STATES, STATES> &A, const Matrix<STATES, STATES> &system_noise)
     {
         _x_n = A * _x_n;
         _y_n = _H * _x_n;
         _P_n = A * _P_n * A.transposed() + system_noise;
+        return _x_n;
     }
 
     Matrix<STATES, 1> &correct(const Matrix<MEASURE_STATES, MEASURE_STATES> &measure_noise, const Matrix<MEASURE_STATES, 1> &measurements)
