@@ -28,7 +28,7 @@ public:
 
     Matrix<STATES, 1> &predict(const Matrix<STATES, STATES> &A, const Matrix<STATES, STATES> &system_noise)
     {
-        return predict(A, system_noise, Matrix<STATES, 1>());
+        return predict(A, system_noise, Matrix<STATES, 1>(ZEROES));
     }
 
     Matrix<STATES, 1> &correct(const Matrix<MEASURE_STATES, MEASURE_STATES> &measure_noise, const Matrix<MEASURE_STATES, 1> &measurements)
